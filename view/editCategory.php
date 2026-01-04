@@ -1,13 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BookShine - Edit Category</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
-<body class="bg-gray-100 flex items-center justify-center h-screen p-4">
+
+<div class="bg-gray-100 flex items-center justify-center h-screen p-4">
 
     <div class="bg-white rounded-2xl shadow-xl w-full max-w-[600px] p-8">
         <div class="flex justify-between items-center mb-6">
@@ -51,5 +43,4 @@
         </form>
     </div>
 
-</body>
-</html>
+</div>
