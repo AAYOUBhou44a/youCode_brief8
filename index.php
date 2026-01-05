@@ -1,4 +1,8 @@
 <?php
+require 'vendor/autoload.php';
+
+
+
 session_start();
 
 include "header.php";
@@ -24,7 +28,7 @@ $rootes = [
 ];
 // if(isset($rootes[$roote]))
 if(array_key_exists($roote, $rootes)){
-    include "view/$roote.php";
+    include "view/$rootes[$roote].php";
 }else{
     include "view/404.php";
 }

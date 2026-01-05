@@ -4,7 +4,7 @@
     <div class="bg-white rounded-2xl shadow-xl w-full max-w-[600px] p-8">
         <div class="flex justify-between items-center mb-6">
             <h1 class="text-2xl font-bold text-gray-800">Modifier l'Article</h1>
-            <a href="articles.php" class="text-gray-400 hover:text-gray-600 transition-colors">
+            <a href="/articles/view/articles" class="text-gray-400 hover:text-gray-600 transition-colors">
                 <i class="fa-solid fa-xmark text-2xl"></i>
             </a>
         </div>
@@ -44,7 +44,7 @@
             </div> 
 
             <div class="flex gap-3">
-                <a href="articles.php" class="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium py-3 rounded-lg text-center transition-colors">
+                <a href="/articles/view/articles" class="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium py-3 rounded-lg text-center transition-colors">
                     Annuler
                 </a>
                 <button type="submit" class="flex-[2] bg-purple-600 hover:bg-purple-700 text-white font-medium py-3 rounded-lg transition-colors shadow-md">

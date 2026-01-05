@@ -3,8 +3,8 @@
 
     <nav class="bg-white border-b border-gray-200 py-4 px-6 mb-8">
         <div class="max-w-4xl mx-auto flex justify-between items-center">
-            <a href="articles.php" class="text-purple-600 font-bold text-lg"><i class="fa-solid fa-book-open"></i> BookShine</a>
-            <a href="articles.php" class="text-gray-500 hover:text-purple-600 text-sm flex items-center gap-2">
+            <a href="/articles/view/articles" class="text-purple-600 font-bold text-lg"><i class="fa-solid fa-book-open"></i> BookShine</a>
+            <a href="/articles/view/articles" class="text-gray-500 hover:text-purple-600 text-sm flex items-center gap-2">
                 <i class="fa-solid fa-arrow-left"></i> Retour
             </a>
         </div>

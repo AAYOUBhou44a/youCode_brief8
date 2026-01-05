@@ -23,24 +23,24 @@
 
             <ul id="blog-menu" class="pl-0 space-y-1 hidden transition-all duration-300">
                 <li class="relative">
-                    <a href="categorie.php" class="menu-item active11 flex items-center gap-3 p-3 font-medium pl-8 w-[calc(100%+1.5rem)]">
+                    <a href="/articles/view/categorie" class="menu-item active11 flex items-center gap-3 p-3 font-medium pl-8 w-[calc(100%+1.5rem)]">
                         <i class="fa-regular fa-file"></i> Categories
                     </a>
                 </li>
                 <li>
-                    <a href="articles.php" class="flex items-center gap-3 p-3 hover:text-white transition-colors pl-8">
+                    <a href="/articles/view/articles" class="flex items-center gap-3 p-3 hover:text-white transition-colors pl-8">
                         <i class="fa-solid fa-file-lines"></i> Articles
                     </a>
                 </li>
                 <li>
-                    <a href="comments.php" class="flex items-center gap-3 p-3 hover:text-white transition-colors pl-8">
+                    <a href="/articles/view>/comments" class="flex items-center gap-3 p-3 hover:text-white transition-colors pl-8">
                         <i class="fa-regular fa-comments"></i> Comments
                     </a>
                 </li>
             </ul>
             <div class="mt-4 px-6 mb-2 text-xs uppercase text-gray-500 font-semibold">Modules</div>
             <ul class="px-3">
-                <li><a href="users.php" class="flex items-center gap-3 p-3 hover:text-white rounded-lg"><i class="fa-solid fa-users"></i> Users</a></li>
+                <li><a href="/articles/view/users" class="flex items-center gap-3 p-3 hover:text-white rounded-lg"><i class="fa-solid fa-users"></i> Users</a></li>
             </ul>
         </nav>
         <div class="p-4 border-t border-gray-700">
@@ -80,7 +80,7 @@
             </div>
 
             <div class="flex justify-between gap-4 mb-6">
-                <a href="addCategory.php" class="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg text-sm font-medium flex items-center gap-2 shadow-sm">
+                <a href="/articles/view/addCategory" class="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg text-sm font-medium flex items-center gap-2 shadow-sm">
                     <i class="fa-solid fa-plus"></i> Add Category
                 </a>
             </div>
@@ -106,7 +106,7 @@
                             <td class="p-4 text-gray-600">Articles sur les innovations et le hardware.</td>
                             <td class="p-4 text-right">
                                 <div class="flex items-center justify-end gap-2">
-                                    <a href="editCategory.php" class="w-10 h-8 rounded bg-purple-600 text-white hover:bg-purple-700 flex items-center justify-center shadow-sm">
+                                    <a href="/articles/view/editCategory" class="w-10 h-8 rounded bg-purple-600 text-white hover:bg-purple-700 flex items-center justify-center shadow-sm">
                                         <i class="fa-solid fa-pencil"></i>
                                     </a>
                                     <a href="#" onclick="return confirm('Are you sure?')" class="inline-flex w-8 h-8 rounded bg-pink-500 text-white hover:bg-pink-600 items-center justify-center shadow-sm">
@@ -123,7 +123,7 @@
                             <td class="p-4 text-gray-600">Tout sur l'UI/UX et le graphisme moderne.</td>
                             <td class="p-4 text-right">
                                 <div class="flex items-center justify-end gap-2">
-                                    <a href="editCategory.php" class="w-10 h-8 rounded bg-purple-600 text-white hover:bg-purple-700 flex items-center justify-center shadow-sm">
+                                    <a href="/articles/view/editCategory" class="w-10 h-8 rounded bg-purple-600 text-white hover:bg-purple-700 flex items-center justify-center shadow-sm">
                                         <i class="fa-solid fa-pencil"></i>
                                     </a>
                                     <a href="#" class="inline-flex w-8 h-8 rounded bg-pink-500 text-white hover:bg-pink-600 items-center justify-center shadow-sm">

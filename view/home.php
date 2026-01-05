@@ -5,14 +5,14 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16">
                 <div class="flex items-center">
-                    <a href="index.html" class="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-500">
+                    <a href="/articles/view/home" class="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-500">
                         <i class="fa-solid fa-book-open text-purple-600 mr-2"></i>BookShine
                     </a>
                 </div>
                 <div class="flex items-center gap-4">
                     <span class="text-sm text-gray-600 hidden md:block">Bonjour, <strong>Admin</strong></span>
-                    <a href="articles.php" class="text-sm bg-purple-100 text-purple-700 px-3 py-1 rounded-full hover:bg-purple-200 transition">Dashboard</a>
-                    <a href="login.php" class="text-gray-500 hover:text-red-500 transition-colors"><i class="fa-solid fa-power-off"></i></a>
+                    <a href="/articles/view/articles" class="text-sm bg-purple-100 text-purple-700 px-3 py-1 rounded-full hover:bg-purple-200 transition">Dashboard</a>
+                    <a href="/articles/view/login" class="text-gray-500 hover:text-red-500 transition-colors"><i class="fa-solid fa-power-off"></i></a>
                 </div>
             </div>
         </div>
@@ -76,7 +76,7 @@
                                 <span><i class="fa-solid fa-eye text-purple-400 mr-1"></i> 1,240</span>
                                 <span><i class="fa-regular fa-comment text-pink-400 mr-1"></i> 18</span>
                             </div>
-                            <a href="articleDetail.html" class="text-purple-600 font-bold text-sm hover:translate-x-1 transition-transform inline-flex items-center">
+                            <a href="/articles/view/articleDetails" class="text-purple-600 font-bold text-sm hover:translate-x-1 transition-transform inline-flex items-center">
                                 Lire la suite <i class="fa-solid fa-arrow-right ml-2"></i>
                             </a>
                         </div>
@@ -108,7 +108,7 @@
                         </span>
                         
                         <div class="space-y-3">
-                            <a href="articles.php" class="flex items-center justify-center w-full bg-gray-50 hover:bg-purple-50 text-gray-700 hover:text-purple-700 font-medium py-2.5 rounded-xl border border-gray-200 hover:border-purple-200 transition-all">
+                            <a href="/articles/view/articles" class="flex items-center justify-center w-full bg-gray-50 hover:bg-purple-50 text-gray-700 hover:text-purple-700 font-medium py-2.5 rounded-xl border border-gray-200 hover:border-purple-200 transition-all">
                                 <i class="fa-solid fa-gauge mr-2"></i> Dashboard
                             </a>
                             <a href="logout.html" class="flex items-center justify-center w-full bg-red-50 hover:bg-red-100 text-red-600 font-medium py-2.5 rounded-xl border border-red-100 transition-all">

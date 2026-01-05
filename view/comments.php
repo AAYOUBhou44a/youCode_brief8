@@ -22,24 +22,24 @@
 
             <ul id="blog-menu" class="pl-0 space-y-1 block transition-all duration-300">
                 <li>
-                    <a href="categorie.php" class="flex items-center gap-3 p-3 hover:text-white transition-colors pl-8">
+                    <a href="/articles/view/categorie" class="flex items-center gap-3 p-3 hover:text-white transition-colors pl-8">
                         <i class="fa-regular fa-file"></i> Categories
                     </a>
                 </li>
                 <li>
-                    <a href="articles.php" class="flex items-center gap-3 p-3 hover:text-white transition-colors pl-8">
+                    <a href="/articles/view/articles" class="flex items-center gap-3 p-3 hover:text-white transition-colors pl-8">
                         <i class="fa-solid fa-file-lines"></i> Articles
                     </a>
                 </li>
                 <li class="relative">
-                    <a href="comments.php" class="menu-item active11 flex items-center gap-3 p-3 font-medium pl-8 w-[calc(100%+1.5rem)]">
+                    <a href="/articles/view/comments" class="menu-item active11 flex items-center gap-3 p-3 font-medium pl-8 w-[calc(100%+1.5rem)]">
                         <i class="fa-regular fa-comments"></i> Comments
                     </a>
                 </li>
             </ul>
             <div class="mt-4 px-6 mb-2 text-xs uppercase text-gray-500 font-semibold">Modules</div>
             <ul class="px-3">
-                <li><a href="users.php" class="flex items-center gap-3 p-3 hover:text-white rounded-lg"><i class="fa-solid fa-users"></i> Users</a></li>
+                <li><a href="/articles/view/users" class="flex items-center gap-3 p-3 hover:text-white rounded-lg"><i class="fa-solid fa-users"></i> Users</a></li>
             </ul>
         </nav>
         
