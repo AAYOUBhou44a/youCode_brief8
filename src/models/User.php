@@ -1,17 +1,7 @@
 <?php
-// namespace App\Test;
-
-// class Classtest{
-//     public function check(){
-//         return "L'autoloading PSR-4 fonctionne parfaitement !";
-//     }
-// }
 namespace App\models;
 
 abstract class User{
-    function __construct(){
-
-    }
 
     public function login(){
 
@@ -20,6 +10,24 @@ abstract class User{
     public function logout(){
 
     }
+
+    public function likeArticle(){
+
+    }
+
+    public function dislikeArticle(){
+
+    }
     
+    public function addComment(){
+
+    }
+
+    public function deleteComment(){
+
+    }
+    public function updateComment(){
+
+    }
 }
 ?>
