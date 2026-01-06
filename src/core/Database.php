@@ -1,13 +1,19 @@
 <?php
-class DATABASE{
+namespace App\core;
+
+use PDO;
+use PDOException;
+
+class Database{
     private $host = 'localhost';
     private $name = 'root';
     private $dbname = 'articles';
     private $password = '';
-    private $conn;
+    private $conn = NULL;
     function getConnection(){
-        if($conn){
-            return $conn;
+        if($this->conn){
+            return $this->conn;
+            exit;
         }
         try{
             $this->conn = new PDO(

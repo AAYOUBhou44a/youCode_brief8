@@ -1,9 +1,8 @@
 <?php
+session_start();
+
 require 'vendor/autoload.php';
 
-
-
-session_start();
 
 include "header.php";
 
@@ -24,7 +23,9 @@ $rootes = [
     "articles/view/categorie" => "categorie",
     "articles/view/comments" => "comments",
     "articles/view/editArticle" => "editArticle",
-    "articles/view/users" => "users"
+    "articles/view/users" => "users",
+    "articles/view/login" => "login",
+    "articles/view/register" => "register",
 ];
 // if(isset($rootes[$roote]))
 if(array_key_exists($roote, $rootes)){
