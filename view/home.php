@@ -1,23 +1,6 @@
 
 <div class="text-gray-800">
 
-    <nav class="bg-white border-b border-gray-200 sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16">
-                <div class="flex items-center">
-                    <a href="/articles/view/home" class="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-500">
-                        <i class="fa-solid fa-book-open text-purple-600 mr-2"></i>BookShine
-                    </a>
-                </div>
-                <div class="flex items-center gap-4">
-                    <span class="text-sm text-gray-600 hidden md:block">Bonjour, <strong>Admin</strong></span>
-                    <a href="/articles/view/articles" class="text-sm bg-purple-100 text-purple-700 px-3 py-1 rounded-full hover:bg-purple-200 transition">Dashboard</a>
-                    <a href="/articles/view/login" class="text-gray-500 hover:text-red-500 transition-colors"><i class="fa-solid fa-power-off"></i></a>
-                </div>
-            </div>
-        </div>
-    </nav>
-
     <div class="bg-gradient-to-r from-indigo-900 via-purple-900 to-pink-800 text-white py-12 px-4 shadow-lg">
         <div class="max-w-7xl mx-auto">
             <h1 class="text-3xl md:text-4xl font-bold mb-2 text-center">Bienvenue sur BookShine</h1>
@@ -134,19 +117,6 @@
         </div>
     </div>
     
-    <footer class="bg-white border-t border-gray-200 py-10 mt-12">
-        <div class="max-w-7xl mx-auto px-4 text-center">
-            <div class="text-2xl font-bold text-gray-300 mb-4 tracking-widest uppercase">BookShine</div>
-            <div class="flex justify-center gap-6 mb-6 text-gray-400">
-                <a href="#" class="hover:text-purple-600"><i class="fa-brands fa-twitter"></i></a>
-                <a href="#" class="hover:text-purple-600"><i class="fa-brands fa-facebook"></i></a>
-                <a href="#" class="hover:text-purple-600"><i class="fa-brands fa-instagram"></i></a>
-            </div>
-            <p class="text-gray-500 text-sm">
-                &copy; 2026 BookShine. Tous droits réservés. <br>
-                <span class="text-xs opacity-50 italic">Fait avec passion pour les lecteurs.</span>
-            </p>
-        </div>
-    </footer>
+
 
 </div>

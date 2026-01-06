@@ -46,3 +46,19 @@
     </style>
 </head>
 <body>
+        <nav class="bg-white border-b border-gray-200 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="/articles/view/home" class="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-500">
+                        <i class="fa-solid fa-book-open text-purple-600 mr-2"></i>BookShine
+                    </a>
+                </div>
+                <div class="flex items-center gap-4">
+                    <span class="text-sm text-gray-600 hidden md:block">Bonjour, <strong><?= $_SESSION["user_firstName"] ?></strong></span>
+                    <a href="/articles/view/articles" class="text-sm bg-purple-100 text-purple-700 px-3 py-1 rounded-full hover:bg-purple-200 transition">Dashboard</a>
+                    <a href="/articles/view/login" class="text-gray-500 hover:text-red-500 transition-colors"><i class="fa-solid fa-power-off"></i></a>
+                </div>
+            </div>
+        </div>
+    </nav>
