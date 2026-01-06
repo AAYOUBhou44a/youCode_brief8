@@ -7,7 +7,7 @@
             <p class="text-center text-purple-200 mb-10 text-lg">Explorez, Lisez, Partagez vos connaissances.</p>
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
-                <div class="bg-white/10 backdrop-blur-md rounded-xl p-6 border border-white/20">
+                <!-- <div class="bg-white/10 backdrop-blur-md rounded-xl p-6 border border-white/20">
                     <div class="text-4xl font-bold mb-1">128</div>
                     <div class="text-sm text-purple-200 uppercase tracking-wider">Articles Publiés</div>
                 </div>
@@ -18,7 +18,7 @@
                 <div class="bg-white/10 backdrop-blur-md rounded-xl p-6 border border-white/20">
                     <div class="text-4xl font-bold mb-1">14</div>
                     <div class="text-sm text-blue-200 uppercase tracking-wider">Catégories</div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
@@ -79,28 +79,32 @@
             <div class="lg:col-span-1 space-y-8">
                 
                 <div class="sticky top-24 space-y-6">
+                    <?php if(isset($_SESSION["user_role"])):?>
                     <div class="bg-white rounded-2xl shadow-md border border-gray-100 p-6 text-center">
                         <div class="w-20 h-20 mx-auto rounded-full bg-gradient-to-tr from-purple-500 to-pink-500 p-1 mb-4">
                             <div class="w-full h-full rounded-full bg-white flex items-center justify-center text-2xl font-bold text-gray-700 uppercase">
-                                A
+                                <?= $_SESSION["user_firstName"][0]; ?>
                             </div>
                         </div>
-                        <h3 class="text-xl font-bold text-gray-800">Admin User</h3>
+                        <h3 class="text-xl font-bold text-gray-800"><?= $_SESSION["user_firstName"] . " " . $_SESSION["user_lastName"]; ?></h3>
                         <span class="inline-block bg-purple-100 text-purple-700 text-xs px-3 py-1 rounded-full uppercase font-bold mt-2 mb-4">
-                            Administrateur
+                            <?= $_SESSION["user_role"] ?>
                         </span>
                         
                         <div class="space-y-3">
+                            <?php if(isset($_SESSION["user_role"]) && $_SESSION["user_role"] === "admin"): ?>
                             <a href="/articles/view/articles" class="flex items-center justify-center w-full bg-gray-50 hover:bg-purple-50 text-gray-700 hover:text-purple-700 font-medium py-2.5 rounded-xl border border-gray-200 hover:border-purple-200 transition-all">
                                 <i class="fa-solid fa-gauge mr-2"></i> Dashboard
                             </a>
-                            <a href="logout.html" class="flex items-center justify-center w-full bg-red-50 hover:bg-red-100 text-red-600 font-medium py-2.5 rounded-xl border border-red-100 transition-all">
+                            <?php endif; ?>
+                            <a href="/articles/view/logout" class="flex items-center justify-center w-full bg-red-50 hover:bg-red-100 text-red-600 font-medium py-2.5 rounded-xl border border-red-100 transition-all">
                                 <i class="fa-solid fa-arrow-right-from-bracket mr-2"></i> Déconnexion
                             </a>
                         </div>
                     </div>
+                    <?php endif; ?>
 
-                    <div class="bg-gradient-to-br from-indigo-600 to-purple-700 rounded-2xl p-6 text-white shadow-xl">
+                    <div class="bg-gradient-to-br from-indigo-600 to-purple-700 rounded-2xl p-6 text-white shadow-xl <?= isset($_SESSION["user_role"]) ? "" : "mt-[80px]";?>">
                         <h4 class="font-bold text-lg mb-2 flex items-center">
                             <i class="fa-solid fa-star mr-2 text-yellow-300"></i>Rejoignez-nous!
                         </h4>
@@ -116,7 +120,4 @@
 
         </div>
     </div>
-    
-
-
 </div>

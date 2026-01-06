@@ -1,4 +1,4 @@
-
+<!-- <?php //if($_SESSION["user_role"] === "author"): ?>
 <div class="flex h-screen overflow-hidden">
 
     <aside class="w-64 sidebar-bg text-gray-300 flex flex-col transition-all duration-300 hidden md:flex">
@@ -49,7 +49,7 @@
                 <div class="overflow-hidden">
                     <h4 class="text-sm font-white text-white italic">Auteur</h4>
                 </div>
-                <a href="logout.html" class="ml-auto text-gray-500 hover:text-red-400">
+                <a href="/articles/view/logout" class="ml-auto text-gray-500 hover:text-red-400">
                     <i class="fa-solid fa-power-off"></i>
                 </a>
             </div>
@@ -157,3 +157,6 @@
         });
     </script>
 </div>
+<?php// else:?>
+    <h1>not found</h1>
+<?php //endif; ?> -->

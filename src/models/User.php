@@ -64,7 +64,11 @@ abstract class User{
     }
 
     public function logout(){
-
+        session_start();
+        session_unset();
+        session_destroy();
+        header("Location: /articles/view/register");
+        exit();
     }
 
     public function likeArticle(){

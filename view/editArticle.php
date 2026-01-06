@@ -1,3 +1,4 @@
+<?php if($_SESSION["user_role"] === 'author'): ?>
 
 <div class="bg-gray-100 flex items-center justify-center h-screen p-4">
 
@@ -9,7 +10,7 @@
             </a>
         </div>
 
-        <form action="#" method="GET">
+        <form  method="GET">
             <div class="mb-4">
                 <label class="block text-gray-700 text-sm font-semibold mb-2">Titre de l'article</label>
                 <input type="text" name="title" value="Les tendances du Web Design 2026" required 
@@ -55,3 +56,7 @@
     </div>
 
 </div>
+
+<?php else: ?>
+    <h1>not found</h1>
+<?php endif;?>

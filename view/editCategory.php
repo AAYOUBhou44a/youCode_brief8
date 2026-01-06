@@ -1,4 +1,4 @@
-
+<?php if($_SESSION["user_role"] === 'admin'):?>
 <div class="bg-gray-100 flex items-center justify-center h-screen p-4">
 
     <div class="bg-white rounded-2xl shadow-xl w-full max-w-[600px] p-8">
@@ -9,7 +9,7 @@
             </a>
         </div>
 
-        <form action="#" method="GET">
+        <form  method="GET">
             <div class="mb-4">
                 <label class="block text-gray-700 text-sm font-semibold mb-2">Nom de la catégorie</label>
                 <input 
@@ -44,3 +44,6 @@
     </div>
 
 </div>
+<?php else: ?>
+    <h1>not found</h1>
+<?php endif; ?>

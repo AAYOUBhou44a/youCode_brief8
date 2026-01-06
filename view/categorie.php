@@ -1,60 +1,59 @@
+<?php if($_SESSION["user_role"] === "admin"): ?>
 
 <div class="flex h-screen overflow-hidden">
 
-    <aside class="w-64 sidebar-bg text-gray-300 flex flex-col transition-all duration-300 hidden md:flex">
-        <div class="h-16 flex items-center px-6 border-b border-gray-700">
-            <div class="flex items-center gap-2 font-bold text-white text-xl">
-                <div class="w-8 h-8 bg-gradient-to-br from-purple-500 to-blue-500 rounded-full flex items-center justify-center">
-                    <i class="fa-solid fa-moon"></i>
-                </div>
-                <span>Dashboard </span>
+<aside class="w-64 sidebar-bg text-gray-300 flex flex-col transition-all duration-300 hidden md:flex h-screen sticky top-0">
+    <div class="h-16 flex items-center px-6 border-b border-gray-700">
+        <div class="flex items-center gap-2 font-bold text-white text-xl">
+            <div class="w-8 h-8 bg-gradient-to-br from-purple-500 to-blue-500 rounded-full flex items-center justify-center">
+                <i class="fa-solid fa-moon"></i>
             </div>
+            <span>Dashboard</span>
         </div>
+    </div>
 
-       <nav class="flex-1 py-4 overflow-y-auto">
-            <div class="px-6 mb-2 text-xs uppercase text-gray-500 font-semibold">System</div>
-            <button id="blog-toggle" class="w-full flex items-center justify-between p-3 bg-purple-600 text-white rounded-lg mb-1 transition-colors hover:bg-purple-700">
-                <div class="flex items-center gap-3">
-                    <i class="fa-solid fa-newspaper"></i>
-                    <span>Blog</span>
-                </div>
-                <i id="blog-arrow" class="fa-solid fa-chevron-down transition-transform duration-300"></i>
-            </button>
-
-            <ul id="blog-menu" class="pl-0 space-y-1 hidden transition-all duration-300">
-                <li class="relative">
-                    <a href="/articles/view/categorie" class="menu-item active11 flex items-center gap-3 p-3 font-medium pl-8 w-[calc(100%+1.5rem)]">
-                        <i class="fa-regular fa-file"></i> Categories
-                    </a>
-                </li>
-                <li>
-                    <a href="/articles/view/articles" class="flex items-center gap-3 p-3 hover:text-white transition-colors pl-8">
-                        <i class="fa-solid fa-file-lines"></i> Articles
-                    </a>
-                </li>
-                <li>
-                    <a href="/articles/view>/comments" class="flex items-center gap-3 p-3 hover:text-white transition-colors pl-8">
-                        <i class="fa-regular fa-comments"></i> Comments
-                    </a>
-                </li>
-            </ul>
-            <div class="mt-4 px-6 mb-2 text-xs uppercase text-gray-500 font-semibold">Modules</div>
-            <ul class="px-3">
-                <li><a href="/articles/view/users" class="flex items-center gap-3 p-3 hover:text-white rounded-lg"><i class="fa-solid fa-users"></i> Users</a></li>
-            </ul>
-        </nav>
-        <div class="p-4 border-t border-gray-700">
+    <nav class="flex-1 py-4 overflow-y-auto">
+        <div class="px-6 mb-2 text-xs uppercase text-gray-500 font-semibold tracking-wider">Administration</div>
+        
+        <button id="blog-toggle" class="w-full flex items-center justify-between p-3 bg-purple-600 text-white rounded-lg mb-1 transition-colors hover:bg-purple-700">
             <div class="flex items-center gap-3">
-                <img src="https://ui-avatars.com/api/?name=Admin&background=random" class="w-10 h-10 rounded-full bg-blue-100">
-                <div class="overflow-hidden">
-                    <h4 class="text-sm font-white text-white">Administrateur</h4>
-                </div>
-                <a href="logout.html">
-                    <button class="ml-auto text-gray-500 hover:text-red-400"><i class="fa-solid fa-power-off"></i></button>
-                </a>
+                <i class="fa-solid fa-newspaper"></i>
+                <span>Gestion</span>
             </div>
+            <i id="blog-arrow" class="fa-solid fa-chevron-down transition-transform duration-300"></i>
+        </button>
+
+        <ul id="blog-menu" class="pl-0 space-y-1 transition-all duration-300">
+            <li>
+                <a href="/articles/view/categorie" class="flex items-center gap-3 p-3 hover:text-white hover:bg-gray-700/50 transition-colors pl-8 rounded-lg mx-2">
+                    <i class="fa-regular fa-folder-open"></i> Catégories
+                </a>
+            </li>
+        </ul>
+
+        <div class="mt-5 px-6 mb-2 text-xs uppercase text-gray-500 font-semibold tracking-wider">Modules</div>
+        <ul class="px-3">
+            <li>
+                <a href="/articles/view/users" class="flex items-center gap-3 p-3 hover:text-white hover:bg-gray-700/50 rounded-lg transition-colors">
+                    <i class="fa-solid fa-users"></i> Utilisateurs
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="p-4 border-t border-gray-700 bg-black/10">
+        <div class="flex items-center gap-3">
+            <img src="https://ui-avatars.com/api/?name=<?= $_SESSION['user_firstName'] ?? 'Admin' ?>&background=random" class="w-10 h-10 rounded-full border border-gray-600">
+            <div class="overflow-hidden flex-1">
+                <h4 class="text-sm font-semibold text-white truncate"><?= $_SESSION['user_firstName'] ?? 'Admin' ?></h4>
+                <p class="text-[10px] text-gray-500 uppercase"><?= $_SESSION['user_role'] ?? 'Administrateur' ?></p>
+            </div>
+            <a href="/articles/view/logout" class="text-gray-500 hover:text-red-400 p-2 transition-colors" title="Déconnexion">
+                <i class="fa-solid fa-power-off"></i>
+            </a>
         </div>
-    </aside>
+    </div>
+</aside>
 
     <main class="flex-1 flex flex-col h-screen overflow-hidden bg-gray-100">
         <header class="h-16 bg-white border-b border-gray-200 flex items-center justify-between px-6">
@@ -140,3 +139,6 @@
 
     <script src="blog.js"></script>
     </div>
+    <?php else: ?>
+        <h1>not found</h1>
+    <?php endif; ?>
