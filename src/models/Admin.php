@@ -24,11 +24,47 @@ class Admin extends User{
         }catch(\PDOException $e){
             echo "Error Catched : " . $e->getMessage();
         }
-        
+
+        try{
+            $sql = "SELECT * FROM categories";
+            $pdo->prepare($sql);
+            $stmt->execute();
+            $categories = $stmt->fetchAll();
+            return $categories;
+        }catch(\PDOException $e){
+            echo "Error Catched : " . $e->getMessage();
+        }
     }
 
-    public function deleteCategory(){
+    public function getCategories(){
 
+        try{
+
+            $db = new Database();
+            $pdo = $db->getConnection();
+            $sql = "SELECT * FROM categories";
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute();
+            $categories = $stmt->fetchAll();
+            return $categories;
+        }catch(\PDOException $e){
+            echo "Error Catched : " . $e->getMessage();
+        }
+    }
+
+    public function deleteCategory($id){
+        try{
+            $db = new Database();
+            $pdo = $db->getConnection();
+            
+            $sql = "DELETE FROM categories WHERE id = :id";
+            $stmt = $pdo->prepare($sql);
+            $succes = $stmt->execute([":id" => $id]);
+            return true;
+        }catch(\PODException $e ){
+            // return false;
+            echo "Error catched : " . $e->getMessage();
+        }
     }
 
     // public function deleteUser(){

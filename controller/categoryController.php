@@ -2,7 +2,7 @@
 use App\models\Admin;
 
 
-if($_SERVER["REQUEST_METHOD"] === "POST"){
+if($_SERVER["REQUEST_METHOD"] === "POST" && !isset($_POST["category_id"])){
     $erreur = [];
     $category = trim($_POST["category"]);
     $description = trim($_POST["description"]);
@@ -25,6 +25,14 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
             echo "Erreur : un erreur s'est produit lors de la création du catégorie";
         }
     }
+}
+
+if($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["category_id"])){
+    $id = $_POST["category_id"];
+    $adminInst = new Admin();
+    $deleted = $adminInst->deleteCategory($id);
+    header("Location: /articles/view/categorie");
+    exit();
 }
 
 

@@ -23,6 +23,7 @@ $rootes = [
     "articles/view/articles" => "articles",
     "articles/view/articlesDetails" => "articlesDetails",
     "articles/view/categorie" => "categorie",
+    "articles/view/editCategory" => "editCategory",
     "articles/view/editArticle" => "editArticle",
     "articles/view/users" => "users",
     "articles/view/login" => "login",

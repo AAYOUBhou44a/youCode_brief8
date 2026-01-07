@@ -9,15 +9,15 @@
             </a>
         </div>
 
-        <form  method="GET">
+        <form  method="POST">
             <div class="mb-4">
                 <label class="block text-gray-700 text-sm font-semibold mb-2">Nom de la catégorie</label>
                 <input 
                     type="text" 
-                    name="nom_cat" 
-                    value="Technologie" 
+                    name="newCategory" 
+                    value="<?= $category["categorie"]; ?>" 
                     placeholder="Ex: Voyage, Cuisine..."
-                    required 
+                    required
                     class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 outline-none transition-all"
                 >
             </div>
@@ -29,7 +29,7 @@
                     rows="4" 
                     placeholder="Décrivez brièvement cette catégorie..."
                     class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 outline-none transition-all"
-                >Articles sur les innovations, le développement web et le hardware.</textarea>
+                ><?= $category["categorie"] ?></textarea>
             </div>
 
             <div class="flex gap-3">

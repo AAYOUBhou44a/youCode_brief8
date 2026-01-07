@@ -1,3 +1,11 @@
+<?php
+use App\models\Admin;
+$adminInst = new Admin();
+$categories = $adminInst->getCategories();
+
+require_once __DIR__ . "/../controller/categoryController.php";
+?>
+
 <?php if($_SESSION["user_role"] === "admin"): ?>
 
 <div class="flex h-screen overflow-hidden">
@@ -73,7 +81,7 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                 <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-                    <div class="text-3xl font-bold text-gray-800 mb-1">3</div>
+                    <div class="text-3xl font-bold text-gray-800 mb-1"><?= count($categories) ?></div>
                     <div class="text-gray-500 text-sm">Total Categories</div>
                 </div>
             </div>
@@ -97,40 +105,33 @@
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-gray-100 text-sm text-gray-700">
+
+
+                    <?php foreach($categories as $category): ?>
                         <tr class="hover:bg-gray-50 transition-colors">
                             <td class="p-4">
-                                <span class="bg-purple-100 text-purple-700 px-2 py-1 rounded text-xs font-bold">1</span>
+                                <span class="bg-purple-100 text-purple-700 px-2 py-1 rounded text-xs font-bold"><?= $category["id"] ?></span>
                             </td>
-                            <td class="p-4 font-medium text-gray-900">Technologie</td>
-                            <td class="p-4 text-gray-600">Articles sur les innovations et le hardware.</td>
+                            <td class="p-4 font-medium text-gray-900"><?= $category["categorie"] ?></td>
+                            <td class="p-4 text-gray-600"><?= $category["description"] ?></td>
                             <td class="p-4 text-right">
                                 <div class="flex items-center justify-end gap-2">
                                     <a href="/articles/view/editCategory" class="w-10 h-8 rounded bg-purple-600 text-white hover:bg-purple-700 flex items-center justify-center shadow-sm">
                                         <i class="fa-solid fa-pencil"></i>
                                     </a>
-                                    <a href="#" onclick="return confirm('Are you sure?')" class="inline-flex w-8 h-8 rounded bg-pink-500 text-white hover:bg-pink-600 items-center justify-center shadow-sm">
-                                        <i class="fa-regular fa-trash-can"></i>
-                                    </a>
+                                    <form method="POST">
+                                        <input type="hidden" name="category_id" value="<?= $category["id"]?>">
+                                        <button type="submit" class="inline-flex w-8 h-8 rounded bg-pink-500 text-white hover:bg-pink-600 items-center justify-center shadow-sm">
+                                            <i class="fa-regular fa-trash-can"></i>
+                                        </button>
+                                    </form>
                                 </div>
                             </td>
                         </tr>
                         <tr class="hover:bg-gray-50 transition-colors">
-                            <td class="p-4">
-                                <span class="bg-purple-100 text-purple-700 px-2 py-1 rounded text-xs font-bold">2</span>
-                            </td>
-                            <td class="p-4 font-medium text-gray-900">Design</td>
-                            <td class="p-4 text-gray-600">Tout sur l'UI/UX et le graphisme moderne.</td>
-                            <td class="p-4 text-right">
-                                <div class="flex items-center justify-end gap-2">
-                                    <a href="/articles/view/editCategory" class="w-10 h-8 rounded bg-purple-600 text-white hover:bg-purple-700 flex items-center justify-center shadow-sm">
-                                        <i class="fa-solid fa-pencil"></i>
-                                    </a>
-                                    <a href="#" class="inline-flex w-8 h-8 rounded bg-pink-500 text-white hover:bg-pink-600 items-center justify-center shadow-sm">
-                                        <i class="fa-regular fa-trash-can"></i>
-                                    </a>
-                                </div>
-                            </td>
-                        </tr>
+                    <?php endforeach; ?>
+
+
                     </tbody>
                 </table>
             </div>
