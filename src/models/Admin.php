@@ -4,7 +4,7 @@ use App\core\Database;
 
 class Admin extends User{
 
-    public function addCategory($categorie, $description){
+    public function addcategorie($categorie, $description){
 
         try{
             $sql = "INSERT INTO categories(categorie, description, admin)
@@ -36,7 +36,7 @@ class Admin extends User{
         }
     }
 
-    public function getCategories(){
+    public function getcategories(){
 
         try{
 
@@ -52,7 +52,7 @@ class Admin extends User{
         }
     }
 
-    public function deleteCategory($id){
+    public function deletecategorie($id){
         try{
             $db = new Database();
             $pdo = $db->getConnection();

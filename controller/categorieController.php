@@ -2,13 +2,13 @@
 use App\models\Admin;
 
 
-if($_SERVER["REQUEST_METHOD"] === "POST" && !isset($_POST["category_id"])){
+if($_SERVER["REQUEST_METHOD"] === "POST" && !isset($_POST["categorie_id"])){
     $erreur = [];
-    $category = trim($_POST["category"]);
+    $categorie = trim($_POST["categorie"]);
     $description = trim($_POST["description"]);
 
-    if(empty($category)){
-        $erreur["category"] = "Veuillez saisir une catégorie valide";
+    if(empty($categorie)){
+        $erreur["categorie"] = "Veuillez saisir une catégorie valide";
     }
     if(empty($description)){
         $erreur["description"] = "Veuillez saisir une description valide";
@@ -16,7 +16,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST" && !isset($_POST["category_id"])){
 
     if(empty($erreur)){
         $adminInst = new Admin();
-        $succes = $adminInst->addCategory($category, $description);
+        $succes = $adminInst->addcategorie($categorie, $description);
         if($succes){
             header("Location: /articles/view/categorie");
             echo "Catégorie ajouté avec succès";
@@ -27,10 +27,10 @@ if($_SERVER["REQUEST_METHOD"] === "POST" && !isset($_POST["category_id"])){
     }
 }
 
-if($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["category_id"])){
-    $id = $_POST["category_id"];
+if($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["categorie_id"])){
+    $id = $_POST["categorie_id"];
     $adminInst = new Admin();
-    $deleted = $adminInst->deleteCategory($id);
+    $deleted = $adminInst->deletecategorie($id);
     header("Location: /articles/view/categorie");
     exit();
 }

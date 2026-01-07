@@ -1,9 +1,9 @@
 <?php
 use App\models\Admin;
 $adminInst = new Admin();
-$categories = $adminInst->getCategories();
+$categories = $adminInst->getcategories();
 
-require_once __DIR__ . "/../controller/categoryController.php";
+require_once __DIR__ . "/../controller/categorieController.php";
 ?>
 
 <?php if($_SESSION["user_role"] === "admin"): ?>
@@ -68,7 +68,7 @@ require_once __DIR__ . "/../controller/categoryController.php";
             <div class="flex items-center text-sm text-gray-500">
                 <a href="#" class="text-pink-500 hover:text-pink-600"><i class="fa-solid fa-house"></i></a>
                 <span class="mx-2">/</span>
-                <span class="text-gray-700">Categories</span>
+                <span class="text-gray-700">categories</span>
             </div>
 
             <div class="flex items-center gap-4">
@@ -77,18 +77,18 @@ require_once __DIR__ . "/../controller/categoryController.php";
         </header>
 
         <div class="flex-1 overflow-y-auto p-8">
-            <h1 class="text-2xl font-semibold text-gray-800 mb-6">Categories Management</h1>
+            <h1 class="text-2xl font-semibold text-gray-800 mb-6">categories Management</h1>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                 <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
                     <div class="text-3xl font-bold text-gray-800 mb-1"><?= count($categories) ?></div>
-                    <div class="text-gray-500 text-sm">Total Categories</div>
+                    <div class="text-gray-500 text-sm">Total categories</div>
                 </div>
             </div>
 
             <div class="flex justify-between gap-4 mb-6">
-                <a href="/articles/view/addCategory" class="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg text-sm font-medium flex items-center gap-2 shadow-sm">
-                    <i class="fa-solid fa-plus"></i> Add Category
+                <a href="/articles/view/addcategorie" class="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg text-sm font-medium flex items-center gap-2 shadow-sm">
+                    <i class="fa-solid fa-plus"></i> Add categorie
                 </a>
             </div>
 
@@ -99,7 +99,7 @@ require_once __DIR__ . "/../controller/categoryController.php";
                             <th class="p-4 w-16">
                                 <div class="flex items-center gap-1 cursor-pointer">ID <i class="fa-solid fa-sort"></i></div>
                             </th>
-                            <th class="p-4">Category Name</th>
+                            <th class="p-4">categorie Name</th>
                             <th class="p-4">Description</th>
                             <th class="p-4 text-right">Actions</th>
                         </tr>
@@ -107,20 +107,20 @@ require_once __DIR__ . "/../controller/categoryController.php";
                     <tbody class="divide-y divide-gray-100 text-sm text-gray-700">
 
 
-                    <?php foreach($categories as $category): ?>
+                    <?php foreach($categories as $categorie): ?>
                         <tr class="hover:bg-gray-50 transition-colors">
                             <td class="p-4">
-                                <span class="bg-purple-100 text-purple-700 px-2 py-1 rounded text-xs font-bold"><?= $category["id"] ?></span>
+                                <span class="bg-purple-100 text-purple-700 px-2 py-1 rounded text-xs font-bold"><?= $categorie["id"] ?></span>
                             </td>
-                            <td class="p-4 font-medium text-gray-900"><?= $category["categorie"] ?></td>
-                            <td class="p-4 text-gray-600"><?= $category["description"] ?></td>
+                            <td class="p-4 font-medium text-gray-900"><?= $categorie["categorie"] ?></td>
+                            <td class="p-4 text-gray-600"><?= $categorie["description"] ?></td>
                             <td class="p-4 text-right">
                                 <div class="flex items-center justify-end gap-2">
-                                    <a href="/articles/view/editCategory" class="w-10 h-8 rounded bg-purple-600 text-white hover:bg-purple-700 flex items-center justify-center shadow-sm">
+                                    <a href="/articles/view/editcategorie" class="w-10 h-8 rounded bg-purple-600 text-white hover:bg-purple-700 flex items-center justify-center shadow-sm">
                                         <i class="fa-solid fa-pencil"></i>
                                     </a>
                                     <form method="POST">
-                                        <input type="hidden" name="category_id" value="<?= $category["id"]?>">
+                                        <input type="hidden" name="categorie_id" value="<?= $categorie["id"]?>">
                                         <button type="submit" class="inline-flex w-8 h-8 rounded bg-pink-500 text-white hover:bg-pink-600 items-center justify-center shadow-sm">
                                             <i class="fa-regular fa-trash-can"></i>
                                         </button>

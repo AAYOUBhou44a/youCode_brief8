@@ -12,9 +12,11 @@ CREATE TABLE IF NOT EXISTS users(
 
 CREATE TABLE IF NOT EXISTS articles(
     id INT AUTO_INCREMENT PRIMARY KEY,
-    article text NOT NULL ,
+    title VARCHAR(100) NOT NULL,
+    content text NOT NULL ,
     authorId INT NOT NULL,
-    numberLikes INT NOT NULL ,
+    numberLikes INT,
+    categorie VARCHAR(100) NOT NULL,
     -- publishDate DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (authorId) REFERENCES users(id)
 );

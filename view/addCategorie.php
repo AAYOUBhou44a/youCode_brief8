@@ -1,4 +1,4 @@
-<?php require_once __DIR__ . "/../controller/categoryController.php"; ?>
+<?php require_once __DIR__ . "/../controller/categorieController.php"; ?>
 
 <?php if($_SESSION["user_role"] === 'admin'): ?>
 <div class="bg-gray-100 flex items-center justify-center h-screen p-4">
@@ -16,7 +16,7 @@
                 <label class="block text-gray-700 text-sm font-semibold mb-2">Nom de la catégorie</label>
                 <input 
                     type="text" 
-                    name="category" 
+                    name="categorie" 
                     placeholder="Ex: Intelligence Artificielle, Santé..."
                     required 
                     class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 outline-none transition-all placeholder-gray-400"

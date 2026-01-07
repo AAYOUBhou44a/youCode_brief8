@@ -2,10 +2,11 @@
 use App\models\Admin;
 
 $AdminInst = new Admin();
-$categories = $AdminInst->getCategories();
+$categories = $AdminInst->getcategories();
 
+require_once __DIR__ . "/../controller/articleController.php";
 ?>
-<?php if($_SESSION["user_role"] === "author"): ?>
+<?php if(isset($_SESSION["user_role"]) && $_SESSION["user_role"] === "author"): ?>
 <div class="bg-gray-100 flex items-center justify-center min-h-screen p-4">
 
     <div class="bg-white rounded-2xl shadow-xl w-full max-w-[600px] p-8">
@@ -38,11 +39,11 @@ $categories = $AdminInst->getCategories();
             
             <div class="mb-6">
                 <label class="block text-gray-700 text-sm font-semibold mb-2">Catégorie</label>
-                <select name="category" required 
+                <select name="categorie" required 
                         class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 outline-none bg-white">
                     <option value="">Sélectionner une catégorie</option>
-                    <?php foreach($categories as $category): ?>
-                    <option value="<?= $category["id"] ?>"><?= $category["categorie"] ?></option>
+                    <?php foreach($categories as $categorie): ?>
+                    <option value="<?= $categorie["categorie"] ?>"><?= $categorie["categorie"] ?></option>
                     <?php endforeach; ?>
                 </select>
             </div> 

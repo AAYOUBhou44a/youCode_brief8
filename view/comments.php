@@ -23,7 +23,7 @@
             <ul id="blog-menu" class="pl-0 space-y-1 block transition-all duration-300">
                 <li>
                     <a href="/articles/view/categorie" class="flex items-center gap-3 p-3 hover:text-white transition-colors pl-8">
-                        <i class="fa-regular fa-file"></i> Categories
+                        <i class="fa-regular fa-file"></i> categories
                     </a>
                 </li>
                 <li>

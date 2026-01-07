@@ -14,8 +14,8 @@
                 <label class="block text-gray-700 text-sm font-semibold mb-2">Nom de la catégorie</label>
                 <input 
                     type="text" 
-                    name="newCategory" 
-                    value="<?= $category["categorie"]; ?>" 
+                    name="newcategorie" 
+                    value="<?= $categorie["categorie"]; ?>" 
                     placeholder="Ex: Voyage, Cuisine..."
                     required
                     class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 outline-none transition-all"
@@ -29,7 +29,7 @@
                     rows="4" 
                     placeholder="Décrivez brièvement cette catégorie..."
                     class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 outline-none transition-all"
-                ><?= $category["categorie"] ?></textarea>
+                ><?= $categorie["categorie"] ?></textarea>
             </div>
 
             <div class="flex gap-3">
