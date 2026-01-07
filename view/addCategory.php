@@ -1,3 +1,6 @@
+<?php require_once __DIR__ . "/../controller/categoryController.php"; ?>
+
+
 <?php if($_SESSION["user_role"] === 'admin'): ?>
 <div class="bg-gray-100 flex items-center justify-center h-screen p-4">
 

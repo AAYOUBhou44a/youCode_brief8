@@ -27,3 +27,13 @@ CREATE TABLE IF NOT EXISTS comments(
     FOREIGN KEY (articleId) REFERENCES articles(id),
     FOREIGN KEY (userId) REFERENCES users(id)
 );
+
+CREATE TABLE IF NOT EXISTS categories(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    categorie VARCHAR(100) NOT NULL UNIQUE,
+    description TEXT ,
+    admin INT NOT NULL ,
+    FOREIGN KEY (admin) REFERENCES users(id)
+);
+
+-- admin INT NOT NULL UNIQUE , si on met unique là bas l'admin sera capable de créer une unique catégorie 
