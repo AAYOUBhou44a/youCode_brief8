@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS comments(
 CREATE TABLE IF NOT EXISTS categories(
     id INT AUTO_INCREMENT PRIMARY KEY,
     categorie VARCHAR(100) NOT NULL UNIQUE,
-    description TEXT ,
+    description TEXT NOT NULL,
     admin INT NOT NULL ,
     FOREIGN KEY (admin) REFERENCES users(id)
 );

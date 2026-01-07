@@ -12,12 +12,12 @@
             </a>
         </div>
 
-        <form  method="GET">
+        <form  method="POST">
             <div class="mb-4">
                 <label class="block text-gray-700 text-sm font-semibold mb-2">Nom de la catégorie</label>
                 <input 
                     type="text" 
-                    name="nom_cat" 
+                    name="category" 
                     placeholder="Ex: Intelligence Artificielle, Santé..."
                     required 
                     class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 outline-none transition-all placeholder-gray-400"
@@ -27,7 +27,7 @@
             <div class="mb-6">
                 <label class="block text-gray-700 text-sm font-semibold mb-2">Description</label>
                 <textarea 
-                    name="description" 
+                    name="description"
                     rows="4" 
                     placeholder="Expliquez brièvement quels types d'articles seront classés ici..."
                     class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 outline-none transition-all placeholder-gray-400"

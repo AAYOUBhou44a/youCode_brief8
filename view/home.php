@@ -93,7 +93,7 @@
                         
                         <div class="space-y-3">
                             <?php if(isset($_SESSION["user_role"]) && $_SESSION["user_role"] === "admin"): ?>
-                            <a href="/articles/view/articles" class="flex items-center justify-center w-full bg-gray-50 hover:bg-purple-50 text-gray-700 hover:text-purple-700 font-medium py-2.5 rounded-xl border border-gray-200 hover:border-purple-200 transition-all">
+                            <a href="/articles/view/categorie" class="flex items-center justify-center w-full bg-gray-50 hover:bg-purple-50 text-gray-700 hover:text-purple-700 font-medium py-2.5 rounded-xl border border-gray-200 hover:border-purple-200 transition-all">
                                 <i class="fa-solid fa-gauge mr-2"></i> Dashboard
                             </a>
                             <?php endif; ?>
