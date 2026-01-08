@@ -1,4 +1,4 @@
-<!-- <?php //if($_SESSION["user_role"] === "author"): ?>
+<?php //if($_SESSION["user_role"] === "author"): ?>
 <div class="flex h-screen overflow-hidden">
 
     <aside class="w-64 sidebar-bg text-gray-300 flex flex-col transition-all duration-300 hidden md:flex">
@@ -159,4 +159,4 @@
 </div>
 <?php// else:?>
     <h1>not found</h1>
-<?php //endif; ?> -->
+<?php //endif; ?>

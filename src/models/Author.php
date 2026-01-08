@@ -11,15 +11,15 @@ class Author extends User{
             $db = new Database();
             $pdo = $db->getConnection();
 
-            $sql = "INSERT INTO articles(title, content, authorId, numberLikes, categorie)
-            VALUES(:title, :content, :authorId, :numberLikes, :categorie)
+            $sql = "INSERT INTO articles(title, content, authorName, numberLikes, categorie)
+            VALUES(:title, :content, :authorName, :numberLikes, :categorie)
             "; 
             
             $stmt = $pdo->prepare($sql);
             $succes = $stmt->execute([
                 ":title" => $title,
                 ":content" => $content,
-                ":authorId" => $_SESSION["user_id"],
+                ":authorName" => $_SESSION["user_firstName"] . " " . $_SESSION["user_lastName"],
                 ":numberLikes" => 0,
                 ":categorie" => $categorie
             ]);
@@ -32,6 +32,22 @@ class Author extends User{
 
     }
 
+    public function getArticles(){
+        try{
+
+            $sql = "SELECT * FROM articles";
+            $db = new Database();
+            $pdo = $db->getConnection();
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute();
+            $articles = $stmt->fetchAll();
+
+            return $articles;
+
+        }catch(\PDOException $e){
+            "Erreur : " . $e->getMessage();
+        }
+    }
     public function deleteArticle(){
 
     }

@@ -1,73 +1,120 @@
-<?php if($_SESSION["user_role"] === 'author'): ?>
-<div class="flex h-screen overflow-hidden">
+<?php
+use App\models\Author;
 
-    <main class="flex-1 flex flex-col h-screen overflow-hidden bg-gray-100">
-        <header class="h-16 bg-white border-b border-gray-200 flex items-center justify-between px-6">
-            <div class="flex items-center text-sm text-gray-500">
-                <span class="text-gray-700">Articles Management</span>
-            </div>
-        </header>
+$authorInst = new Author();
+$articles = $authorInst->getArticles();
+?>
 
-        <div class="flex-1 overflow-y-auto p-8">
-            <div class="flex justify-between items-center mb-6">
-                <h1 class="text-2xl font-semibold text-gray-800">Articles Gallery</h1>
-                <a href="/articles/view/addArticle" class="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg text-sm font-medium flex items-center gap-2 shadow-sm">
-                    <i class="fa-solid fa-plus"></i> Create Article
-                </a>
-            </div>
+<?php if(isset($articles) && count($articles) > 0): ?>
+    <?php foreach($articles as $article): ?>
+<div class="bg-gray-50 font-sans text-gray-800 pt-[30px]">
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100 overflow-hidden flex flex-col h-full">
-                    <div class="relative h-48 w-full">
-                       <a href="/articles/view/articleDetails">
-                         <img src="https://images.unsplash.com/photo-1544640808-32ca72ac7f67?q=80&w=1000&auto=format&fit=crop" 
-                              alt="Cover" 
-                              class="w-full h-full object-cover">
-                        </a>
-                    </div>
-
-                    <div class="p-5 flex-1 flex flex-col">
-                        <h3 class="text-lg font-bold text-gray-800 mb-2 line-clamp-2" title="Titre de l'article">
-                            Titre de l'article exemplaire
-                        </h3>
-                        
-                        <div class="flex items-center justify-between text-sm text-gray-500 mb-4 mt-auto">
-                            <div class="flex items-center gap-2">
-                                <i class="fa-solid fa-user-circle text-gray-400"></i>
-                                <span>Auteur Nom</span>
-                            </div>
-                            <div class="flex items-center gap-1 bg-gray-100 px-2 py-1 rounded-full text-xs">
-                                <i class="fa-solid fa-eye text-purple-500"></i>
-                                <span>124</span>
-                            </div>
-                        </div>
-
-                        <div class="border-t border-gray-100 my-3"></div>
-
-                        <div class="flex items-center justify-between pt-2">
-                            <div class="flex items-center gap-2 text-xs text-gray-400 font-medium">
-                                <i class="fa-regular fa-calendar text-gray-400"></i>
-                                <span>02 Jan 2026</span>
-                            </div>
-
-                            <div class="flex items-center gap-2">
-                                <a href="/articles/view/editArticle" class="w-8 h-8 rounded bg-blue-50 text-blue-600 hover:bg-blue-600 hover:text-white transition-colors flex items-center justify-center shadow-sm" title="Edit">
-                                    <i class="fa-solid fa-pencil"></i>
-                                </a>
-                                <a href="#" onclick="return confirm('Supprimer cet article ?')" class="w-8 h-8 rounded bg-pink-50 text-pink-500 hover:bg-pink-600 hover:text-white transition-colors flex items-center justify-center shadow-sm" title="Delete">
-                                    <i class="fa-regular fa-trash-can"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                </div>
+    <!-- <nav class="bg-white border-b border-gray-200 py-4 px-6 mb-8">
+        <div class="max-w-4xl mx-auto flex justify-between items-center">
+            <a href="/articles/view/articles" class="text-purple-600 font-bold text-lg"><i class="fa-solid fa-book-open"></i> BookShine</a>
+            <a href="/articles/view/articles" class="text-gray-500 hover:text-purple-600 text-sm flex items-center gap-2">
+                <i class="fa-solid fa-arrow-left"></i> Retour
+            </a>
         </div>
-    </main>
+    </nav> -->
 
-    <script src="blog.js"></script>
+    <main class="max-w-4xl mx-auto px-6 pb-12">
+        
+        <div class="text-center mb-8">
+            <span class="inline-block bg-purple-100 text-purple-700 text-xs px-3 py-1 rounded-full uppercase font-bold tracking-wide mb-3">
+                <?= $article["categorie"] ?>
+            </span>
+            <h1 class="text-3xl md:text-5xl font-extrabold text-gray-900 leading-tight mb-4">
+                <?= $article["title"] ?>
+            </h1>
+            
+            <div class="flex flex-wrap justify-center items-center gap-6 text-sm text-gray-500">
+                
+                <!-- <div class="flex items-center gap-2">
+                    <i class="fa-regular fa-calendar"></i>
+                    <span>02 Jan 2026</span>
+                </div>
+                
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-eye text-purple-400"></i>
+                    <span>1,240 Vues</span>
+                </div> -->
+            </div>
+        </div>
+        
+        <!-- <div class="mb-9 shadow-lg rounded-2xl overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995" 
+            alt="Article Cover" 
+            class="w-full h-[500px] object-cover hover:scale-105 transition-transform duration-700">
+        </div> -->
+        
+        <article class="prose max-w-none text-lg leading-relaxed text-gray-700 bg-white p-8 md:p-12 rounded-2xl shadow-sm border border-gray-100">
+            <div class="flex items-center gap-2 pb-[30px]">
+                <div class="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center text-gray-600">
+                    <i class="fa-solid fa-user"></i>
+                </div>
+                <span class="font-medium text-gray-900"><?= $article["authorName"] ?></span>
+            </div>
+
+            <?= $article["content"] ?>
+            
+<div class="flex items-center justify-between pt-2 mt-[20px]">
+    <div class="flex items-center gap-2 text-xs text-gray-400 font-medium">
+        <i class="fa-regular fa-calendar text-gray-400"></i>
+        <span>02 Jan 2026</span>
+    </div>
+
+    <div class="flex items-center gap-4">
+        <button type="button" 
+                onclick="toggleLike(this)" 
+                class="flex items-center gap-1 text-gray-500 hover:text-pink-500 transition-colors group" 
+                title="J'aime">
+            <i class="fa-regular fa-heart text-lg group-active:scale-125 transition-transform"></i>
+            <span class="text-xs font-semibold">12</span>
+        </button>
+        <form action="/articles/view/addComment" method="POST">
+            <input type="hidden" name="articleId" value="<?= $article["id"] ?>">
+            <button type="submit"
+               class="flex items-center gap-1 text-gray-500 hover:text-blue-500 transition-colors" 
+               title="Commenter">
+                <i class="fa-regular fa-comment text-lg"></i>
+                <span class="text-xs font-semibold">5</span>
+            </button>
+        </form>
+    </div>
 </div>
+   
+
+
+
+
+</article>
+
+
+<?php endforeach; ?>
+
+</main>
+</div>
+<script>
+    function toggleLike(button) {
+        const icon = button.querySelector('i');
+        
+        // On bascule entre le coeur vide et le coeur plein
+        if (icon.classList.contains('fa-regular')) {
+            // Mode "Like" activé
+            icon.classList.remove('fa-regular', 'text-gray-500');
+        icon.classList.add('fa-solid', 'text-pink-500');
+        button.classList.add('text-pink-500');
+    } else {
+        // Mode "Like" désactivé
+        icon.classList.remove('fa-solid', 'text-pink-500');
+        icon.classList.add('fa-regular', 'text-gray-500');
+        button.classList.remove('text-pink-500');
+    }
+}
+</script>
 
 <?php else: ?>
-    <h1>not found</h1>
-<?php endif; ?>
+    <h1>aucun article pour l'instant</h1>
+
+<?php endif;?>

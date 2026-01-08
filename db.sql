@@ -14,11 +14,11 @@ CREATE TABLE IF NOT EXISTS articles(
     id INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(100) NOT NULL,
     content text NOT NULL ,
-    authorId INT NOT NULL,
+    authorName VARCHAR(255) NOT NULL,
     numberLikes INT,
-    categorie VARCHAR(100) NOT NULL,
+    categorie VARCHAR(100) NOT NULL
     -- publishDate DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (authorId) REFERENCES users(id)
+    -- FOREIGN KEY (authorName) REFERENCES users(id)
 );
 
 CREATE TABLE IF NOT EXISTS comments(

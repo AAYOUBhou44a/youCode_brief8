@@ -79,8 +79,44 @@ abstract class User{
 
     }
     
-    public function addComment(){
+    public function addComment($comment, $articleId){
+        try{
 
+            $sql = "INSERT INTO comments(comment, articleId, userId)
+            VALUES (:comment, :articleId, :userId)
+            ";
+
+            $db = new Database();
+            $pdo = $db->getConnection();
+
+            $stmt = $pdo->prepare($sql);
+            $succes = $stmt->execute([
+                ":comment" => $comment,
+                ":articleId" =>$articleId,
+                ":userId" =>$_SESSION["user_id"]
+            ]);
+
+            return $succes;
+        }catch(PDOException $e){
+            echo "Error Catched" . $e->getMessage();
+        }
+    }
+
+    public function getComments($articleId){
+        try{
+            $db = new Database();
+            $pdo = $db->getConnection();
+
+            $sql = "SELECT comments.comment, users.firstName, users.lastName
+             FROM comments INNER JOIN users on comments.userId = users.id WHERE articleId = :articleId";
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute([":articleId" => $articleId]);
+            $comments = $stmt->fetchAll();
+            return $comments;
+
+        }catch(PDOException $e){
+            "Erreur : " . $e-> getMessage();
+        }
     }
 
     public function deleteComment(){
