@@ -5,6 +5,8 @@ $authorInst = new Author();
 $articles = $authorInst->getArticles();
 
 require_once __DIR__ . "/../controller/likeController.php";
+
+require_once __DIR__ . "/../controller/articleController.php";
 ?>
 
 <?php if(isset($articles) && count($articles) > 0): ?>
@@ -59,11 +61,32 @@ if($liked){
         </div> -->
         
         <article class="prose max-w-none text-lg leading-relaxed text-gray-700 bg-white p-8 md:p-12 rounded-2xl shadow-sm border border-gray-100">
-            <div class="flex items-center gap-2 pb-[30px]">
-                <div class="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center text-gray-600">
-                    <i class="fa-solid fa-user"></i>
+            <div class="flex items-center gap-2 pb-[30px] justify-between">
+                <div class="flex gap-[10px]">
+                    <div class="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center text-gray-600">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+                    <span class="font-medium text-gray-900"><?= $article["authorName"] ?></span>
                 </div>
-                <span class="font-medium text-gray-900"><?= $article["authorName"] ?></span>
+
+                <div class="flex gap-[12px]">
+
+                    <form method="POST">
+                        <input type="hidden" name="modify_id" value="<?= $article["id"]?>">
+                        <button type="submit" class="w-10 h-8 rounded bg-purple-600 text-white hover:bg-purple-700 flex items-center justify-center shadow-sm">
+                            <i class="fa-solid fa-pencil"></i>
+                        </button>
+                    </form>
+
+                    <form method="POST">
+                        <input type="hidden" name="delete_id" value="<?= $article["id"] ?>">
+                        <button type="submit" class="inline-flex w-8 h-8 rounded bg-pink-500 text-white hover:bg-pink-600 items-center justify-center shadow-sm">
+                            <i class="fa-regular fa-trash-can"></i>
+                        </button>
+                    </form>
+
+                </div>
+
             </div>
 
             <?= $article["content"] ?>

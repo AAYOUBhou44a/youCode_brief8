@@ -20,14 +20,14 @@ CREATE TABLE IF NOT EXISTS articles(
     -- publishDate DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     -- FOREIGN KEY (authorName) REFERENCES users(id)
 );
-
+-- on nom les constraints pour savoir l'erreur s'il survient , si tu fait un foreign key une constraint est généré avec un nom aléatoire .
 CREATE TABLE IF NOT EXISTS comments(
     id INT AUTO_INCREMENT PRIMARY KEY,
     comment text NOT NULL ,
     articleId INT NOT NULL ,
     userId INT NOT NULL ,
-    FOREIGN KEY (articleId) REFERENCES articles(id),
-    FOREIGN KEY (userId) REFERENCES users(id)
+    CONSTRAINT fk_article_comments FOREIGN KEY (articleId) REFERENCES articles(id) ON DELETE CASCADE,
+    CONSTRAINT fk_user_comments FOREIGN KEY (userId) REFERENCES users(id) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS categories(
@@ -35,14 +35,14 @@ CREATE TABLE IF NOT EXISTS categories(
     categorie VARCHAR(100) NOT NULL UNIQUE,
     description TEXT NOT NULL,
     admin INT NOT NULL ,
-    FOREIGN KEY (admin) REFERENCES users(id)
+    CONSTRAINT fk_admin_categories FOREIGN KEY (admin) REFERENCES users(id) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS likes(
     articleId INT NOT NULL,
     userId INT NOT NULL ,
-    FOREIGN KEY(articleId) REFERENCES articles(id),
-    FOREIGN KEY (userId) REFERENCES users(id),
+    CONSTRAINT fk_article_likes FOREIGN KEY(articleId) REFERENCES articles(id) ON DELETE CASCADE,
+    CONSTRAINT fk_user_likes FOREIGN KEY (userId) REFERENCES users(id) ON DELETE CASCADE,
     CONSTRAINT user_like_per_article UNIQUE (articleId, userId)
 );
 

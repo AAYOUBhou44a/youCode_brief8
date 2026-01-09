@@ -52,7 +52,18 @@ class Author extends User{
             "Erreur : " . $e->getMessage();
         }
     }
-    public function deleteArticle(){
+    public function deleteArticle($articleId){
+        try{
+            $sql = "DELETE FROM articles WHERE id = :id";
+            $db = new Database();
+            $pdo = $db->getConnection();
+            $stmt = $pdo->prepare($sql);
+            $succes = $stmt->execute([":id" => $articleId]);
+            return $succes;
+
+        }catch(PDOException $e){
+            "Erreur : " . $e->getMessage();
+        }
 
     }
 

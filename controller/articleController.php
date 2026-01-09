@@ -1,7 +1,7 @@
 <?php
 use App\models\Author;
 
-if($_SERVER["REQUEST_METHOD"] === "POST"){
+if($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["title"])){
     $erreur = [];
 
     $title = trim($_POST["title"]);
@@ -25,6 +25,14 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
             echo "Article ajouté avec succès";
         }
     }
+}
+
+if($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["delete_id"])){
+    $deleteId = $_POST["delete_id"];
+    $authorInst = new Author();
+    $authorInst->deleteArticle($deleteId);
+
+    header("Location: /articles/view/articles");
 }
 
 
