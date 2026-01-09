@@ -35,7 +35,11 @@ class Author extends User{
     public function getArticles(){
         try{
 
-            $sql = "SELECT * FROM articles";
+            $sql = "SELECT articles.*, COUNT(comments.id) as numberComments FROM articles
+             LEFT JOIN comments on articles.id = comments.articleId GROUP BY articles.id
+             ";
+
+             // GROUP BY articles.id dit a sql de compter l'id des commentraires pour chaque articles.id
             $db = new Database();
             $pdo = $db->getConnection();
             $stmt = $pdo->prepare($sql);

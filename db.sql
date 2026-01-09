@@ -6,7 +6,7 @@ CREATE TABLE IF NOT EXISTS users(
     firstName VARCHAR(100) NOT NULL , 
     lastName VARCHAR(100) NOT NULL ,
     email VARCHAR(150) NOT NULL UNIQUE ,
-    password VARCHAR(255) NOT NULL , 
+    password VARCHAR(255) NOT NULL ,
     role ENUM('reader','author','admin') 
 );
 
@@ -36,6 +36,14 @@ CREATE TABLE IF NOT EXISTS categories(
     description TEXT NOT NULL,
     admin INT NOT NULL ,
     FOREIGN KEY (admin) REFERENCES users(id)
+);
+
+CREATE TABLE IF NOT EXISTS likes(
+    articleId INT NOT NULL,
+    userId INT NOT NULL ,
+    FOREIGN KEY(articleId) REFERENCES articles(id),
+    FOREIGN KEY (userId) REFERENCES users(id),
+    CONSTRAINT user_like_per_article UNIQUE (articleId, userId)
 );
 
 -- admin INT NOT NULL UNIQUE , si on met unique là bas l'admin sera capable de créer une unique catégorie 

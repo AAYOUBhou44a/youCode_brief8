@@ -71,8 +71,35 @@ abstract class User{
         exit();
     }
 
-    public function likeArticle(){
+    public function likeArticle($articleId, $userId){
+        try{
+            $db = new Database();
+            $pdo = $db->getConnection();
 
+            $sql = "INSERT INTO likes(articleId, userId)
+            VALUES (:articleId, :userId)
+            ";
+
+            $stmt = $pdo->prepare($sql);
+            $succes = $stmt->execute([
+                ":articleId" => $articleId,
+                ":userId" => $userId
+            ]);
+
+            if($succes){
+               $sql = "UPDATE articles SET numberLikes = numberLikes + 1 WHERE id = :id";
+               $stmt = $pdo->prepare($sql);
+               $succes = $stmt->execute([":id" => $articleId]);
+               return $succes;
+            }
+            else{
+                echo "L'article est déja aimé";
+            }
+
+
+        }catch(PDOException $e){
+            "Erreur : " . $e->getMessage();
+        }
     }
 
     public function dislikeArticle(){

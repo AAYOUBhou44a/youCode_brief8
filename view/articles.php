@@ -3,6 +3,8 @@ use App\models\Author;
 
 $authorInst = new Author();
 $articles = $authorInst->getArticles();
+
+require_once __DIR__ . "/../controller/likeController.php";
 ?>
 
 <?php if(isset($articles) && count($articles) > 0): ?>
@@ -65,20 +67,24 @@ $articles = $authorInst->getArticles();
     </div>
 
     <div class="flex items-center gap-4">
-        <button type="button" 
-                onclick="toggleLike(this)" 
-                class="flex items-center gap-1 text-gray-500 hover:text-pink-500 transition-colors group" 
-                title="J'aime">
-            <i class="fa-regular fa-heart text-lg group-active:scale-125 transition-transform"></i>
-            <span class="text-xs font-semibold">12</span>
-        </button>
+        <form method="POST">
+            <input type="hidden" name="articleId" value="<?= $article["id"] ?>">
+            <input type="hidden" name="userId" value="<?= $_SESSION["user_id"] ?>">
+            <button type="submit" 
+                    onclick="toggleLike(this)" 
+                    class="flex items-center gap-1 text-gray-500 hover:text-pink-500 transition-colors group" 
+                    title="J'aime">
+                <i class="fa-regular fa-heart text-lg group-active:scale-125 transition-transform"></i>
+                <span class="text-xs font-semibold"><?= $article["numberLikes"] ?></span>
+            </button>
+        </form>
         <form action="/articles/view/addComment" method="POST">
             <input type="hidden" name="articleId" value="<?= $article["id"] ?>">
             <button type="submit"
                class="flex items-center gap-1 text-gray-500 hover:text-blue-500 transition-colors" 
                title="Commenter">
                 <i class="fa-regular fa-comment text-lg"></i>
-                <span class="text-xs font-semibold">5</span>
+                <span class="text-xs font-semibold"><?= $article["numberComments"] ?></span>
             </button>
         </form>
     </div>
