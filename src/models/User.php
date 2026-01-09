@@ -76,26 +76,36 @@ abstract class User{
             $db = new Database();
             $pdo = $db->getConnection();
 
-            $sql = "INSERT INTO likes(articleId, userId)
-            VALUES (:articleId, :userId)
-            ";
+            try{
+                $sql = "INSERT INTO likes(articleId, userId)
+                VALUES (:articleId, :userId)
+                ";
+    
+                $stmt = $pdo->prepare($sql);
+                $stmt->execute([
+                    ":articleId" => $articleId,
+                    ":userId" => $userId
+                ]);
+                
+                   $sql = "UPDATE articles SET numberLikes = numberLikes + 1 WHERE id = :id";
+                   $stmt = $pdo->prepare($sql);
+                   $succes = $stmt->execute([":id" => $articleId]);
+                   return $succes;
+                
+            }catch(PDOException $e){
+                if($e->getCode() == 23000){
+                    $sql = "DELETE FROM likes WHERE userId = :userId";
+                    $stmt = $pdo->prepare($sql);
+                    $stmt->execute([":userId" => $userId]);
+                    
+                    $sql = "UPDATE articles SET numberLikes = numberLikes - 1 WHERE id = :id";
+                    $stmt = $pdo->prepare($sql);
+                    $succes = $stmt->execute([":id" => $articleId]);
+                    return $succes;
+                }
 
-            $stmt = $pdo->prepare($sql);
-            $succes = $stmt->execute([
-                ":articleId" => $articleId,
-                ":userId" => $userId
-            ]);
-
-            if($succes){
-               $sql = "UPDATE articles SET numberLikes = numberLikes + 1 WHERE id = :id";
-               $stmt = $pdo->prepare($sql);
-               $succes = $stmt->execute([":id" => $articleId]);
-               return $succes;
+                throw $e; // s'il y a une autre erreur (pas 23000 : c'est à dire que il y a déja l'id de l'utilisateur) on l'envoie ;
             }
-            else{
-                echo "L'article est déja aimé";
-            }
-
 
         }catch(PDOException $e){
             "Erreur : " . $e->getMessage();
