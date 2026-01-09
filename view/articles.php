@@ -71,8 +71,8 @@ if($liked){
 
                 <div class="flex gap-[12px]">
 
-                    <form method="POST">
-                        <input type="hidden" name="modify_id" value="<?= $article["id"]?>">
+                    <form method="POST" action="/articles/view/editArticle">
+                        <input type="hidden" name="update_id" value="<?= $article["id"]?>">
                         <button type="submit" class="w-10 h-8 rounded bg-purple-600 text-white hover:bg-purple-700 flex items-center justify-center shadow-sm">
                             <i class="fa-solid fa-pencil"></i>
                         </button>

@@ -19,6 +19,7 @@ $rootes = [
     "articles/view/logout" => "logout",
     "articles/view/articleDetails" => "articleDetails",
     "articles/view/addArticle" => "addArticle",
+    "articles/view/editArticle" => "editArticle",
     "articles/view/addcategorie" => "addcategorie",
     "articles/view/articles" => "articles",
     "articles/view/comments" => "comments",

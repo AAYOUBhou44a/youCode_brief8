@@ -1,5 +1,18 @@
-<?php if($_SESSION["user_role"] === 'author'): ?>
+<?php 
+use App\models\Author;
+use App\models\Admin;
+ ?>
+<?php if($_SESSION["user_role"] === 'author' && $_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["update_id"])):?>
+<?php
 
+require __DIR__ . "/../controller/articleController.php"; 
+
+$authorInst = new Author();
+$article = $authorInst->getArticle($_POST["update_id"]);
+
+$adminInst = new Admin();
+$categories = $adminInst->getcategories();
+?>
 <div class="bg-gray-100 flex items-center justify-center h-screen p-4">
 
     <div class="bg-white rounded-2xl shadow-xl w-full max-w-[600px] p-8">
@@ -10,14 +23,14 @@
             </a>
         </div>
 
-        <form  method="GET">
+        <form  method="POST">
             <div class="mb-4">
-                <label class="block text-gray-700 text-sm font-semibold mb-2">Titre de l'article</label>
+                <label class="block text-gray-700 text-sm font-semibold mb-2"><?= $article["title"] ?></label>
                 <input type="text" name="title" value="Les tendances du Web Design 2026" required 
                        class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 outline-none transition-all">
             </div>
 
-            <div class="mb-4">
+            <!-- <div class="mb-4">
                 <label class="block text-gray-700 text-sm font-semibold mb-2">Image URL</label>
                 <input type="text" name="image_url" value="https://images.unsplash.com/photo-1498050108023-c5249f4df085" required 
                        class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 outline-none transition-all">
@@ -25,22 +38,22 @@
                     <i class="fa-solid fa-eye"></i> Aperçu : 
                     <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085" alt="Preview" class="h-10 w-16 object-cover rounded border">
                 </div>
-            </div>
+            </div> -->
 
             <div class="mb-4">
                 <label class="block text-gray-700 text-sm font-semibold mb-2">Contenu</label>
                 <textarea name="content" rows="5" required
                           class="w-full px-4 py-3 rounded-lg border border-gray-300 bg-gray-50 focus:bg-white focus:border-purple-500 focus:ring-2 focus:ring-purple-200 outline-none resize-none transition-all"
-                >Le design minimaliste continue de dominer le paysage numérique cette année, avec un accent particulier sur l'accessibilité et les micro-interactions...</textarea>
+                ><?= $article["content"] ?></textarea>
             </div>
             
             <div class="mb-6">
                 <label class="block text-gray-700 text-sm font-semibold mb-2">Catégorie</label>
                 <select name="cat_id" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 outline-none bg-white">
                     <option value="">Sélectionner une catégorie</option>
-                    <option value="1" selected>Technologie</option>
-                    <option value="2">Design</option>
-                    <option value="3">Développement</option>
+                    <?php foreach($categories as $categorie): ?>
+                    <option value="<?= $categorie["categorie"] ?>" selected><?= $categorie["categorie"] ?></option>
+                    <?php endforeach; ?>
                 </select>
             </div> 
 
