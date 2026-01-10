@@ -79,14 +79,26 @@ class Author extends User{
             $succes = $stmt->execute([":id" => $articleId]);
             return $succes;
 
-        }catch(PDOException $e){
+        }catch(\PDOException $e){
             "Erreur : " . $e->getMessage();
         }
 
     }
 
-    public function updateArticle(){
+    public function updateArticle($updateId){
+        try{
+            $db = new Database();
+            $pdo = $db->getConnection();
+            $sql = "UPDATE articles SET title = :title, content = :content, categorie = :categorie 
+            WHERE id = :id
+            ";
+            $stmt = $pdo->prepare($sql);
+            $succes = $stmt->execute([":id" => $updateId]);
+            return $succes;
 
+        }catch(\PDOException $e){
+            "Erreur : " . $e->getMessage();
+        }
     }
 }
 
