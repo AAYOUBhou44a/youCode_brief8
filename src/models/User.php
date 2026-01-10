@@ -156,8 +156,17 @@ abstract class User{
         }
     }
 
-    public function deleteComment(){
-
+    public function deleteComment($id){
+        try{
+            $db = new Database();
+            $pdo = $db->getConnection();
+            $sql = "DELETE FROM comments WHERE id = :id";
+            $stmt = $pdo->prepare($sql);
+            $deleted = $stmt->execute([":id" => $id]);
+            return $deleted;
+        }catch(PDOException $e){
+            "Erreur : " . $e->getMessage();
+        }
     }
     public function updateComment(){
 

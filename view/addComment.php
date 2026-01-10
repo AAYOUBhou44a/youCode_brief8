@@ -29,10 +29,34 @@ $comments = $readerInst->getComments($_POST["articleId"]);
                         <?= strtoupper(substr("Alice", 0, 1)) ?> </div>
                     
                     <div class="flex-grow bg-slate-50 p-5 rounded-2xl rounded-tl-none relative group border border-slate-100">
+
+
+                    <div class="flex flex-col justify-between">
                         <div class="flex justify-between items-start mb-2">
                             <span class="font-bold text-sm text-gray-900"><?= $comment["firstName"] . " " . $comment["lastName"] ?></span>
                             <span class="text-[10px] uppercase tracking-wide text-gray-400">02 Jan 2026</span>
                         </div>
+                        <div class="flex gap-[12px]">
+
+                            <form method="POST" action="/articles/view/editArticle">
+                                <input type="hidden" name="update_id" value="<?= $comment["id"]?>">
+                                <button type="submit" class="w-10 h-8 rounded bg-purple-600 text-white hover:bg-purple-700 flex items-center justify-center shadow-sm">
+                                    <i class="fa-solid fa-pencil"></i>
+                                </button>
+                            </form>
+
+                            <form method="POST">
+                                <input type="hidden" name="delete_id" value="<?= $comment["id"] ?>">
+                                <button type="submit" class="inline-flex w-8 h-8 rounded bg-pink-500 text-white hover:bg-pink-600 items-center justify-center shadow-sm">
+                                    <i class="fa-regular fa-trash-can"></i>
+                                </button>
+                            </form>
+
+                        </div>
+ 
+                    </div>
+
+
                         <p class="text-gray-700 text-sm leading-relaxed">
                             <?= $comment["comment"] ?>
                         </p>
