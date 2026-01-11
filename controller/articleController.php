@@ -36,7 +36,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["delete_id"])){
 }
 
 
-if($_SERVER["RESQUEST_METHOD"] === "POST" && isset($_POST["update_id"])){
+if($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["update_id"])){
     $erreur = [];
     $newTitle = trim($_POST["title"]);
     $newContent = trim($_POST["content"]);
@@ -52,7 +52,7 @@ if($_SERVER["RESQUEST_METHOD"] === "POST" && isset($_POST["update_id"])){
 
     if(empty($erreur)){
         $authorInst = new Author();
-        $succes = $authorInst->updateArticle();
+        $succes = $authorInst->updateArticle($id, $newTitle, $newContent, $newCategorie);
         if($succes){
             header("Location: /articles/view/articles");
         }

@@ -1,3 +1,4 @@
+<?php require_once __DIR__ . "/../controller/commentController.php"; ?>
 <?php 
 use App\models\Reader;
 
@@ -6,7 +7,6 @@ $comments = $readerInst->getComments($_POST["articleId"]);
 
 ?>
 
-<?php require_once __DIR__ . "/../controller/commentController.php"; ?>
 
 <div class="max-w-4xl mx-auto w-full px-4 pb-12">
 
@@ -38,7 +38,7 @@ $comments = $readerInst->getComments($_POST["articleId"]);
                         </div>
                         <div class="flex gap-[12px]">
 
-                            <form method="POST" action="/articles/view/editArticle">
+                            <form method="POST" action="/articles/view/addComment">
                                 <input type="hidden" name="update_id" value="<?= $comment["id"]?>">
                                 <button type="submit" class="w-10 h-8 rounded bg-purple-600 text-white hover:bg-purple-700 flex items-center justify-center shadow-sm">
                                     <i class="fa-solid fa-pencil"></i>

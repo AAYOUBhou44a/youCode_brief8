@@ -1,12 +1,12 @@
 <?php
 use App\models\Reader;
 
-if($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["articleId"]) && isset($_POST["comment"]) && !isse($_POST["delete_id"] && !isset($_POST["update_id"]))){
+if($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["articleId"]) && isset($_POST["comment"]) && !isset($_POST["delete_id"]) && !isset($_POST["update_id"])){
     $erreur = [];
 
 
     $articleId = $_POST["articleId"];
-    echo var_dump($_POST);
+    // echo var_dump($_POST);
     $comment = trim($_POST["comment"]);
 
     if(empty($comment)){
@@ -30,8 +30,13 @@ if($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["articleId"]) && isset(
 if($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["delete_id"])){
     $readerInst = new Reader();
     $deleted = $readerInst->deleteComment($_POST["delete_id"]);
-    header("Location: /article/view/addComment");
+    header("Location: /articles/view/addComment");
+    exit();
 }
+
+// if($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["update_id"])){
+    
+// }
 
 
 
