@@ -36,7 +36,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["delete_id"])){
 }
 
 
-if($_SERVER["RESQUEST_METHOD"] === "POST" && isset($_POST["update_id"])){
+if($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["update_id"])){
     $erreur = [];
     $newTitle = trim($_POST["title"]);
     $newContent = trim($_POST["content"]);
