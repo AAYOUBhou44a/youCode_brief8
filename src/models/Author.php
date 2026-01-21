@@ -49,7 +49,7 @@ class Author extends User{
             return $articles;
 
         }catch(\PDOException $e){
-            "Erreur : " . $e->getMessage();
+            echo "Erreur : " . $e->getMessage();
         }
     }
 
@@ -64,7 +64,7 @@ class Author extends User{
             $article = $stmt->fetch();
             return $article;
         }catch(\PDOException $e){
-            "Erreur : " . $e->getMessage();
+            echo "Erreur : " . $e->getMessage();
         }
         
     }
@@ -80,12 +80,12 @@ class Author extends User{
             return $succes;
 
         }catch(\PDOException $e){
-            "Erreur : " . $e->getMessage();
+            echo "Erreur : " . $e->getMessage();
         }
 
     }
 
-    public function updateArticle($updateId){
+    public function updateArticle($updateId , $title, $content, $categorie){
         try{
             $db = new Database();
             $pdo = $db->getConnection();
@@ -93,11 +93,16 @@ class Author extends User{
             WHERE id = :id
             ";
             $stmt = $pdo->prepare($sql);
-            $succes = $stmt->execute([":id" => $updateId]);
+            $succes = $stmt->execute([
+                ":id" => $updateId,
+                ":title" => $title,
+                ":content" => $content,
+                ":categorie" => $categorie
+            ]);
             return $succes;
 
         }catch(\PDOException $e){
-            "Erreur : " . $e->getMessage();
+            echo "Erreur : " . $e->getMessage();
         }
     }
 }

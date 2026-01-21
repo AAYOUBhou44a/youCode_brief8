@@ -31,10 +31,10 @@ $rootes = [
     "articles/view/users" => "users",
     "articles/view/login" => "login",
     "articles/view/register" => "register",
-];
-// if(isset($rootes[$roote]))
-if(array_key_exists($roote, $rootes)){
-    include "view/$rootes[$roote].php";
+    ];
+    // if(isset($rootes[$roote]))
+    if(array_key_exists($roote, $rootes)){
+        include "view/$rootes[$roote].php";
 }else{
     include "view/404.php";
 }
